@@ -1,0 +1,101 @@
+{
+  "version": "1.1.1",
+  "windows": {
+    "main": {
+      "main": true,
+      "url": "app://editor/index.html",
+      "windowType": "dockable",
+      "x": 133,
+      "y": 180,
+      "width": 1280,
+      "height": 720,
+      "layout": {
+        "children": [
+          {
+            "children": [
+              {
+                "active": 0,
+                "children": [
+                  "hierarchy"
+                ],
+                "height": 300,
+                "type": "panel",
+                "width": 204
+              },
+              {
+                "active": 0,
+                "children": [
+                  "assets"
+                ],
+                "height": 326,
+                "type": "panel",
+                "width": 204
+              }
+            ],
+            "height": 629,
+            "type": "dock-v",
+            "width": 204
+          },
+          {
+            "active": 0,
+            "children": [
+              "inspector"
+            ],
+            "height": 629,
+            "type": "panel",
+            "width": 304
+          },
+          {
+            "children": [
+              {
+                "active": 0,
+                "children": [
+                  "scene"
+                ],
+                "height": 360,
+                "type": "panel",
+                "width": 760
+              },
+              {
+                "active": 0,
+                "children": [
+                  "console",
+                  "timeline"
+                ],
+                "height": 266,
+                "type": "panel",
+                "width": 760
+              }
+            ],
+            "height": 629,
+            "type": "dock-v",
+            "width": 760
+          }
+        ],
+        "type": "dock-h"
+      },
+      "panels": [
+        "hierarchy",
+        "inspector",
+        "console",
+        "timeline",
+        "assets",
+        "scene"
+      ]
+    }
+  },
+  "panels": {
+    "assets": {
+      "x": 89,
+      "y": 393,
+      "width": 204,
+      "height": 422
+    },
+    "hierarchy": {
+      "x": 127,
+      "y": 159,
+      "width": 204,
+      "height": 422
+    }
+  }
+}

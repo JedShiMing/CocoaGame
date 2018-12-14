@@ -1,0 +1,64 @@
+2018-12-14T08:43:26.062Z - normal: Load ~/.CocosCreator/settings.json
+2018-12-14T08:43:26.065Z - normal: checking language setting...
+2018-12-14T08:43:26.065Z - normal: Language: zh
+2018-12-14T08:43:26.513Z - success: protocol editor-framework registered
+2018-12-14T08:43:26.513Z - success: protocol app registered
+2018-12-14T08:43:26.513Z - success: protocol theme registered
+2018-12-14T08:43:26.513Z - success: protocol packages registered
+2018-12-14T08:43:26.513Z - success: protocol unpack registerred
+2018-12-14T08:43:26.513Z - success: protocol disable-commonjs registerred
+2018-12-14T08:43:26.630Z - normal: connected!
+2018-12-14T08:43:26.633Z - normal: Check project /Users/shiming/Desktop/softwareDevelop/wxGame/start_project
+2018-12-14T08:43:26.635Z - normal: Initializing project /Users/shiming/Desktop/softwareDevelop/wxGame/start_project
+2018-12-14T08:43:26.639Z - normal: Initializing Cocos2d
+2018-12-14T08:43:27.264Z - normal: Initializing Asset Database
+2018-12-14T08:43:27.313Z - success: protocol uuid registerred
+2018-12-14T08:43:27.313Z - success: protocol db registerred
+2018-12-14T08:43:27.313Z - success: protocol thumbnail registerred
+2018-12-14T08:43:27.314Z - normal: Loading editor/builtin packages
+2018-12-14T08:43:27.477Z - success: assets loaded
+2018-12-14T08:43:27.481Z - success: builder loaded
+2018-12-14T08:43:27.487Z - success: cocos-analytics loaded
+2018-12-14T08:43:27.495Z - success: console loaded
+2018-12-14T08:43:27.540Z - success: fb-instant-games loaded
+2018-12-14T08:43:27.542Z - success: google-instant-games loaded
+2018-12-14T08:43:27.547Z - success: hierarchy loaded
+2018-12-14T08:43:27.552Z - success: inspector loaded
+2018-12-14T08:43:27.553Z - success: keystore loaded
+2018-12-14T08:43:27.558Z - success: node-library loaded
+2018-12-14T08:43:27.559Z - success: package-asset loaded
+2018-12-14T08:43:27.560Z - success: preferences loaded
+2018-12-14T08:43:27.563Z - success: project-exporter loaded
+2018-12-14T08:43:27.578Z - success: project-importer loaded
+2018-12-14T08:43:27.588Z - success: project-settings loaded
+2018-12-14T08:43:27.591Z - success: ui-kit loaded
+2018-12-14T08:43:27.595Z - success: scene loaded
+2018-12-14T08:43:27.596Z - success: sprite-editor loaded
+2018-12-14T08:43:27.600Z - success: store loaded
+2018-12-14T08:43:27.605Z - success: timeline loaded
+2018-12-14T08:43:27.605Z - normal: Loading builtin packages
+2018-12-14T08:43:27.610Z - success: asset-db-debugger loaded
+2018-12-14T08:43:27.611Z - success: color-picker loaded
+2018-12-14T08:43:27.689Z - success: google-play-instant loaded
+2018-12-14T08:43:27.690Z - success: jsb-adapter loaded
+2018-12-14T08:43:27.694Z - success: oppo-runtime loaded
+2018-12-14T08:43:27.698Z - success: package-manager loaded
+2018-12-14T08:43:27.799Z - success: qqplay-adapter loaded
+2018-12-14T08:43:27.804Z - success: sdkbox loaded
+2018-12-14T08:43:27.808Z - success: tester loaded
+2018-12-14T08:43:27.812Z - success: ui-grid loaded
+2018-12-14T08:43:27.815Z - success: ui-kit-preview-extra loaded
+2018-12-14T08:43:27.818Z - success: ui-kit-preview loaded
+2018-12-14T08:43:27.821Z - success: ui-tree loaded
+2018-12-14T08:43:27.823Z - success: vivo-runtime loaded
+2018-12-14T08:43:27.824Z - success: weapp-adapter loaded
+2018-12-14T08:43:28.702Z - normal: Loading packages
+2018-12-14T08:43:28.708Z - normal: Watching packages
+2018-12-14T08:43:28.792Z - normal: Run Application
+2018-12-14T08:43:29.640Z - success: preview server running at http://localhost:7456
+2018-12-14T08:45:11.493Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:2046
+2018-12-14T08:45:11.495Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:2048
+2018-12-14T09:03:52.012Z - warn: The Asset used by component "cc.Sprite" is missing. Detailed information:
+Node path: "star"
+Missing uuid: "92251a3f-1f40-4db7-836e-6568fb648108"
+
