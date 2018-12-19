@@ -55,7 +55,7 @@
     },
     "_zIndex": 0,
     "groupIndex": 0,
-    "autoReleaseAssets": false,
+    "autoReleaseAssets": true,
     "_id": "e755691c-99ad-4c89-9983-03387b6dd943"
   },
   {
@@ -240,9 +240,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 253,
+      "g": 253,
+      "b": 253,
       "a": 255
     },
     "_contentSize": {

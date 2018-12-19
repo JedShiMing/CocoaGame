@@ -1,64 +1,101 @@
-2018-12-14T08:43:26.062Z - normal: Load ~/.CocosCreator/settings.json
-2018-12-14T08:43:26.065Z - normal: checking language setting...
-2018-12-14T08:43:26.065Z - normal: Language: zh
-2018-12-14T08:43:26.513Z - success: protocol editor-framework registered
-2018-12-14T08:43:26.513Z - success: protocol app registered
-2018-12-14T08:43:26.513Z - success: protocol theme registered
-2018-12-14T08:43:26.513Z - success: protocol packages registered
-2018-12-14T08:43:26.513Z - success: protocol unpack registerred
-2018-12-14T08:43:26.513Z - success: protocol disable-commonjs registerred
-2018-12-14T08:43:26.630Z - normal: connected!
-2018-12-14T08:43:26.633Z - normal: Check project /Users/shiming/Desktop/softwareDevelop/wxGame/start_project
-2018-12-14T08:43:26.635Z - normal: Initializing project /Users/shiming/Desktop/softwareDevelop/wxGame/start_project
-2018-12-14T08:43:26.639Z - normal: Initializing Cocos2d
-2018-12-14T08:43:27.264Z - normal: Initializing Asset Database
-2018-12-14T08:43:27.313Z - success: protocol uuid registerred
-2018-12-14T08:43:27.313Z - success: protocol db registerred
-2018-12-14T08:43:27.313Z - success: protocol thumbnail registerred
-2018-12-14T08:43:27.314Z - normal: Loading editor/builtin packages
-2018-12-14T08:43:27.477Z - success: assets loaded
-2018-12-14T08:43:27.481Z - success: builder loaded
-2018-12-14T08:43:27.487Z - success: cocos-analytics loaded
-2018-12-14T08:43:27.495Z - success: console loaded
-2018-12-14T08:43:27.540Z - success: fb-instant-games loaded
-2018-12-14T08:43:27.542Z - success: google-instant-games loaded
-2018-12-14T08:43:27.547Z - success: hierarchy loaded
-2018-12-14T08:43:27.552Z - success: inspector loaded
-2018-12-14T08:43:27.553Z - success: keystore loaded
-2018-12-14T08:43:27.558Z - success: node-library loaded
-2018-12-14T08:43:27.559Z - success: package-asset loaded
-2018-12-14T08:43:27.560Z - success: preferences loaded
-2018-12-14T08:43:27.563Z - success: project-exporter loaded
-2018-12-14T08:43:27.578Z - success: project-importer loaded
-2018-12-14T08:43:27.588Z - success: project-settings loaded
-2018-12-14T08:43:27.591Z - success: ui-kit loaded
-2018-12-14T08:43:27.595Z - success: scene loaded
-2018-12-14T08:43:27.596Z - success: sprite-editor loaded
-2018-12-14T08:43:27.600Z - success: store loaded
-2018-12-14T08:43:27.605Z - success: timeline loaded
-2018-12-14T08:43:27.605Z - normal: Loading builtin packages
-2018-12-14T08:43:27.610Z - success: asset-db-debugger loaded
-2018-12-14T08:43:27.611Z - success: color-picker loaded
-2018-12-14T08:43:27.689Z - success: google-play-instant loaded
-2018-12-14T08:43:27.690Z - success: jsb-adapter loaded
-2018-12-14T08:43:27.694Z - success: oppo-runtime loaded
-2018-12-14T08:43:27.698Z - success: package-manager loaded
-2018-12-14T08:43:27.799Z - success: qqplay-adapter loaded
-2018-12-14T08:43:27.804Z - success: sdkbox loaded
-2018-12-14T08:43:27.808Z - success: tester loaded
-2018-12-14T08:43:27.812Z - success: ui-grid loaded
-2018-12-14T08:43:27.815Z - success: ui-kit-preview-extra loaded
-2018-12-14T08:43:27.818Z - success: ui-kit-preview loaded
-2018-12-14T08:43:27.821Z - success: ui-tree loaded
-2018-12-14T08:43:27.823Z - success: vivo-runtime loaded
-2018-12-14T08:43:27.824Z - success: weapp-adapter loaded
-2018-12-14T08:43:28.702Z - normal: Loading packages
-2018-12-14T08:43:28.708Z - normal: Watching packages
-2018-12-14T08:43:28.792Z - normal: Run Application
-2018-12-14T08:43:29.640Z - success: preview server running at http://localhost:7456
-2018-12-14T08:45:11.493Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:2046
-2018-12-14T08:45:11.495Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:2048
-2018-12-14T09:03:52.012Z - warn: The Asset used by component "cc.Sprite" is missing. Detailed information:
-Node path: "star"
-Missing uuid: "92251a3f-1f40-4db7-836e-6568fb648108"
-
+2018-12-18T08:58:29.557Z - normal: Load ~/.CocosCreator/settings.json
+2018-12-18T08:58:29.560Z - normal: checking language setting...
+2018-12-18T08:58:29.560Z - normal: Language: zh
+2018-12-18T08:58:30.084Z - success: protocol editor-framework registered
+2018-12-18T08:58:30.084Z - success: protocol app registered
+2018-12-18T08:58:30.084Z - success: protocol theme registered
+2018-12-18T08:58:30.084Z - success: protocol packages registered
+2018-12-18T08:58:30.084Z - success: protocol unpack registerred
+2018-12-18T08:58:30.085Z - success: protocol disable-commonjs registerred
+2018-12-18T08:58:30.211Z - normal: connected!
+2018-12-18T08:58:30.215Z - normal: Check project /Users/shiming/Desktop/softwareDevelop/wxGame/CocoaGame/start_project
+2018-12-18T08:58:30.218Z - normal: Initializing project /Users/shiming/Desktop/softwareDevelop/wxGame/CocoaGame/start_project
+2018-12-18T08:58:30.223Z - normal: Initializing Cocos2d
+2018-12-18T08:58:30.844Z - normal: Initializing Asset Database
+2018-12-18T08:58:30.876Z - success: protocol uuid registerred
+2018-12-18T08:58:30.876Z - success: protocol db registerred
+2018-12-18T08:58:30.876Z - success: protocol thumbnail registerred
+2018-12-18T08:58:30.877Z - normal: Loading editor/builtin packages
+2018-12-18T08:58:31.018Z - success: assets loaded
+2018-12-18T08:58:31.021Z - success: builder loaded
+2018-12-18T08:58:31.023Z - success: cocos-analytics loaded
+2018-12-18T08:58:31.027Z - success: console loaded
+2018-12-18T08:58:31.057Z - success: fb-instant-games loaded
+2018-12-18T08:58:31.059Z - success: google-instant-games loaded
+2018-12-18T08:58:31.065Z - success: hierarchy loaded
+2018-12-18T08:58:31.069Z - success: inspector loaded
+2018-12-18T08:58:31.070Z - success: keystore loaded
+2018-12-18T08:58:31.074Z - success: node-library loaded
+2018-12-18T08:58:31.075Z - success: package-asset loaded
+2018-12-18T08:58:31.077Z - success: preferences loaded
+2018-12-18T08:58:31.081Z - success: project-exporter loaded
+2018-12-18T08:58:31.094Z - success: project-importer loaded
+2018-12-18T08:58:31.098Z - success: project-settings loaded
+2018-12-18T08:58:31.101Z - success: ui-kit loaded
+2018-12-18T08:58:31.105Z - success: scene loaded
+2018-12-18T08:58:31.106Z - success: sprite-editor loaded
+2018-12-18T08:58:31.110Z - success: store loaded
+2018-12-18T08:58:31.115Z - success: timeline loaded
+2018-12-18T08:58:31.116Z - normal: Loading builtin packages
+2018-12-18T08:58:31.125Z - success: asset-db-debugger loaded
+2018-12-18T08:58:31.126Z - success: color-picker loaded
+2018-12-18T08:58:31.206Z - success: google-play-instant loaded
+2018-12-18T08:58:31.207Z - success: jsb-adapter loaded
+2018-12-18T08:58:31.212Z - success: oppo-runtime loaded
+2018-12-18T08:58:31.219Z - success: package-manager loaded
+2018-12-18T08:58:31.318Z - success: qqplay-adapter loaded
+2018-12-18T08:58:31.323Z - success: sdkbox loaded
+2018-12-18T08:58:31.330Z - success: tester loaded
+2018-12-18T08:58:31.335Z - success: ui-grid loaded
+2018-12-18T08:58:31.338Z - success: ui-kit-preview-extra loaded
+2018-12-18T08:58:31.342Z - success: ui-kit-preview loaded
+2018-12-18T08:58:31.347Z - success: ui-tree loaded
+2018-12-18T08:58:31.350Z - success: vivo-runtime loaded
+2018-12-18T08:58:31.350Z - success: weapp-adapter loaded
+2018-12-18T08:58:32.225Z - normal: Loading packages
+2018-12-18T08:58:32.231Z - normal: Watching packages
+2018-12-18T08:58:32.298Z - normal: Run Application
+2018-12-18T08:58:33.022Z - success: preview server running at http://localhost:7456
+2018-12-18T08:59:36.212Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:1482
+2018-12-18T08:59:36.247Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:1485
+2018-12-18T09:00:08.188Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:1828
+2018-12-18T09:01:10.122Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:2587
+2018-12-18T09:01:10.123Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:2590
+2018-12-18T09:01:45.090Z - warn: Error: Ipc will not have a callback. message: scene@renderer:2886
+2018-12-18T09:01:45.091Z - warn: Error: Ipc will not have a callback. message: scene@renderer:2887
+2018-12-18T09:01:45.123Z - error: Failed to reset layout: Error: Failed to close panel scene
+    at Object.e._unloadAll (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/renderer/panel.js:1:2087)
+    at r.waterfall.e (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/renderer/ui/utils/dock-utils.js:1:5916)
+    at fn (/Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:746:34)
+    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:1213:16
+    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:166:37
+    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:706:43
+    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:167:37
+    at Object.async.waterfall (/Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:710:44)
+    at Object.e.reset (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/renderer/ui/utils/dock-utils.js:1:5899)
+    at EventEmitter.t.ipcRenderer.on (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/renderer/ui/utils/dock-utils.js:1:8429)
+    at e.reset.e (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/renderer/ui/utils/dock-utils.js:1:8453)
+    at r.waterfall.e (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/renderer/ui/utils/dock-utils.js:1:7375)
+    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:52:16
+    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:696:30
+    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:167:37
+    at Immediate.<anonymous> (/Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:1206:34)
+    at runCallback (timers.js:672:20)
+    at tryOnImmediate (timers.js:645:5)
+    at processImmediate [as _immediateCallback] (timers.js:617:5)
+2018-12-18T09:02:48.835Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:3563
+2018-12-18T09:02:48.878Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:3567
+2018-12-18T09:04:26.739Z - normal: connected!
+2018-12-18T09:08:52.894Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:7770
+2018-12-18T09:08:52.896Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:7774
+2018-12-18T09:08:52.969Z - error: Can't init canvas 'New Canvas' because it conflicts with the existing 'Canvas', the scene should only have one active canvas at the same time
+    at Object.cc.errorID (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/CCDebug.js:167:16)
+    at cc_Canvas.__preload (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/components/CCCanvas.js:79:31)
+    at call__preloadInTryCatch (eval at misc.tryCatchFunctor_EDITOR (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/utils/misc.js:1:1), <anonymous>:5:32)
+    at CCClass._invoke (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/component-scheduler.js:185:29)
+    at CCClass.invoke (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/node-activator.js:49:22)
+    at CCClass.activateNode (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/node-activator.js:164:34)
+    at cc_Node._onHierarchyChanged (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/utils/base-node.js:640:48)
+    at cc_Node._onHierarchyChanged (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/CCNode.js:706:22)
+    at cc_Node.setParent (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/utils/base-node.js:219:26)
+2018-12-18T09:11:23.634Z - info: shutdown preview server
