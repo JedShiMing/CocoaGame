@@ -21,10 +21,11 @@ export default class NewClass extends cc.Component {
 
     @property(cc.Graphics) // 棋盘
     graphic: cc.Graphics = null
+    
+    private _pad = 20 // 棋盘距离边框的长度
 
     private qiziSize = 70 // 棋子大小
 
-    private _pad = 20 // 棋盘距离边框的长度
 
     // LIFE-CYCLE CALLBACKS:
 
@@ -32,16 +33,28 @@ export default class NewClass extends cc.Component {
 
     start() {
         console.log('开始画棋盘咯')
+        this.qiziSize = (this.node.width - this._pad * 2) / this.rowNum
+        console.log('this.qiziSize = ', this.qiziSize);
+        this.drawQiPan()
     }
 
     drawQiPan() {
-        this.graphic.clear();
-        for (var i = 0; i < this.colNum; i++) {
+        // this.graphic.clear();
+        console.log('this.colNum = ', this.colNum);
+        console.log('this.rowNum = ', this.rowNum);
+        for (let i = 0; i <= this.colNum; i++) {
             this.graphic.moveTo(this._pad + i * this.qiziSize, this._pad)
             this.graphic.lineTo(this._pad + i * this.qiziSize, this.node.width - this._pad)
             this.graphic.stroke()
         }
+        for (let i = 0; i <= this.rowNum; i++) {
+            this.graphic.moveTo(this._pad, this._pad + i * this.qiziSize);
+            this.graphic.lineTo(this.node.width - this._pad, this._pad + i * this.qiziSize);
+            this.graphic.stroke();
+        }
         this.graphic.fill()
+        console.log('一花完毕');
+        
     }
 
     // update (dt) {}

@@ -22,7 +22,7 @@ export default class NewClass extends cc.Component {
     }
 
     gotoWZQ() {
-        console.log('跳转到棋盘')
+        // console.log('跳转到棋盘')
         cc.director.loadScene("qipan")
     }
 
