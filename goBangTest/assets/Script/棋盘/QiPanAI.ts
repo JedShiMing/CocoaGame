@@ -27,6 +27,8 @@ export default class NewClass extends cc.Component {
     private qiziSize_w = 70 // 棋子横向大小
     private qiziSize_h = 70 // 棋子纵向大小
 
+    private drawflag = true
+
 
     // LIFE-CYCLE CALLBACKS:
 
@@ -60,11 +62,24 @@ export default class NewClass extends cc.Component {
 
     onBoardTouched(cool: cc.Vec2) {
         cc.log('cool = ', cool)
-        this.drawCircle(cool)
+        if (this.drawflag) {
+            this.drawCircle(cool)
+        } else {
+            this.drawflag = true
+        }
     }
 
     private addListeners() {
         this.node.on(cc.Node.EventType.TOUCH_END, this.onTouched, this);
+        this.node.on('touchmove', (event) => {
+            // console.log('event = ', event.getLocation(), event.getStartLocation())
+            let startLocation = event.getStartLocation()
+            let location = event.getLocation()
+            if (Math.abs(location.x - startLocation.x) > this.qiziSize_w
+            || Math.abs(location.y - startLocation.y) > this.qiziSize_h) {
+                this.drawflag = false
+            }
+        })
     }
 
     private onTouched(event: cc.Event.EventTouch) {
