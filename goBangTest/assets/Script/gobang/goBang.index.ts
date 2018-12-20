@@ -8,7 +8,7 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class NewClass extends cc.Component {
@@ -17,13 +17,23 @@ export default class NewClass extends cc.Component {
 
     // onLoad () {}
 
-    start () {
+    start() {
 
     }
 
+    // 跳转到棋盘
     gotoWZQ() {
-        // console.log('跳转到棋盘')
-        cc.director.loadScene("qipan")
+        cc.director.preloadScene("qipan", function () {
+            cc.log("Next scene preloaded");
+            cc.director.loadScene("qipan")
+        });
+    }
+
+    // 跳转到主页
+    returnHome() {
+        cc.director.preloadScene('goBang', () => {
+            cc.director.loadScene('goBang')
+        })
     }
 
     // update (dt) {}

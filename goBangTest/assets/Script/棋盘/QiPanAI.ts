@@ -24,7 +24,8 @@ export default class NewClass extends cc.Component {
     
     private _pad = 20 // 棋盘距离边框的长度
 
-    private qiziSize = 70 // 棋子大小
+    private qiziSize_w = 70 // 棋子横向大小
+    private qiziSize_h = 70 // 棋子纵向大小
 
 
     // LIFE-CYCLE CALLBACKS:
@@ -32,30 +33,55 @@ export default class NewClass extends cc.Component {
     // onLoad () {}
 
     start() {
-        console.log('开始画棋盘咯')
-        this.qiziSize = (this.node.width - this._pad * 2) / this.rowNum
-        console.log('this.qiziSize = ', this.qiziSize);
+        console.log('开始画棋盘咯', this.node)
+        this.qiziSize_w = (this.node.width - this._pad * 2) / this.rowNum
+        this.qiziSize_h = (this.node.height - this._pad * 2) / this.rowNum
+        console.log('this.qiziSize = ', this.qiziSize_w, this.qiziSize_h);
+        this.addListeners()
         this.drawQiPan()
     }
 
     drawQiPan() {
-        // this.graphic.clear();
-        console.log('this.colNum = ', this.colNum);
-        console.log('this.rowNum = ', this.rowNum);
+        // 通过纵向数画横向
         for (let i = 0; i <= this.colNum; i++) {
-            this.graphic.moveTo(this._pad + i * this.qiziSize, this._pad)
-            this.graphic.lineTo(this._pad + i * this.qiziSize, this.node.width - this._pad)
+            this.graphic.moveTo(this._pad + i * this. qiziSize_w, this._pad)
+            this.graphic.lineTo(this._pad + i * this.qiziSize_w, this.node.width - this._pad)
             this.graphic.stroke()
         }
         for (let i = 0; i <= this.rowNum; i++) {
-            this.graphic.moveTo(this._pad, this._pad + i * this.qiziSize);
-            this.graphic.lineTo(this.node.width - this._pad, this._pad + i * this.qiziSize);
+            this.graphic.moveTo(this._pad, this._pad + i * this.qiziSize_h);
+            this.graphic.lineTo(this.node.width - this._pad, this._pad + i * this.qiziSize_h);
             this.graphic.stroke();
         }
         this.graphic.fill()
-        console.log('一花完毕');
-        
     }
 
     // update (dt) {}
+
+    onBoardTouched(cool: cc.Vec2) {
+        cc.log('cool = ', cool)
+        this.drawCircle(cool)
+    }
+
+    private addListeners() {
+        this.node.on(cc.Node.EventType.TOUCH_END, this.onTouched, this);
+    }
+
+    private onTouched(event: cc.Event.EventTouch) {
+        let location = this.node.convertToNodeSpaceAR(event.getLocation())
+        this.onBoardTouched(this.analysisXY(location))
+    }
+
+    private analysisXY(location: cc.Vec2): cc.Vec2 {
+        let xid = Math.round((location.x - this._pad) / this.qiziSize_w)
+        let yid = Math.round((location.y - this._pad) / this.qiziSize_h)
+        return cc.v2(xid, yid)
+    }
+
+    private drawCircle(cool: cc.Vec2) {
+        this.graphic.strokeColor = cc.Color.BLACK
+        this.graphic.fillColor = cc.Color.BLACK
+        this.graphic.ellipse(cool.x * this.qiziSize_w + this._pad, cool.y * this.qiziSize_h + this._pad, this.qiziSize_w / 4, this.qiziSize_h / 4)
+        this.graphic.fill()
+    }
 }
