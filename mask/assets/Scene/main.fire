@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.2778988466491608,
-      "y": 0.2778988466491608,
+      "x": 0.2183648767605634,
+      "y": 0.2183648767605634,
       "z": 1
     },
     "_quat": {
@@ -77,6 +77,9 @@
     "_components": [
       {
         "__id__": 13
+      },
+      {
+        "__id__": 14
       }
     ],
     "_prefab": null,
@@ -556,5 +559,22 @@
     "_fitWidth": false,
     "_fitHeight": true,
     "_id": "f9anJwte1P25I6PipMWiiy"
+  },
+  {
+    "__type__": "cc.Animation",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true,
+    "_defaultClip": null,
+    "_clips": [
+      {
+        "__uuid__": "64cd4ba5-ad8e-42a6-8429-9d4389f7e755"
+      }
+    ],
+    "playOnLoad": false,
+    "_id": "ccR4Bxi4lKvpGkwZdyFXG+"
   }
 ]
