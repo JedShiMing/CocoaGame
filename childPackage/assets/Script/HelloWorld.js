@@ -12,15 +12,9 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        this.label.string = this.text;
-        cc.loader.downloader.loadSubpackage('zi_package', function (err) {
-            if (err) {
-                return console.error('加载子包失败 -- ', err);
-            }
-            console.log('load subpackage successfully.');
-        });
+        // this.label.string = this.text;
+        
     },
-
     // called every frame
     update: function (dt) {
 
