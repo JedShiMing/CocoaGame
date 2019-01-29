@@ -1,0 +1,94 @@
+const itemWidth = 90
+
+cc.Class({
+    extends: cc.Component,
+
+    properties: {
+        qqCon: cc.Node,
+        heads: [cc.Node],
+        wxDisplay: cc.Sprite,
+    },
+
+    // LIFE-CYCLE CALLBACKS:
+    onLoad: function () {
+        this.initCanvas()
+        this.qqCon.active = false
+    },
+    onEnable: function () {
+        AF.EventDispatcher.on('UpdateFriendPassed', this.updatePoint, this)
+
+    },
+    onDisable: function () {
+        AF.EventDispatcher.off('UpdateFriendPassed', this.updatePoint, this)
+    },
+    updatePoint: function (pointId) {
+        console.log('是否微信app',AF.platform.isWxApp(), { pointId })
+        if (AF.platform.isWxApp()) {
+            AF.util.postMessage(3, { pointId });
+        }
+        else if (AF.platform.isQQApp()) {
+            this.qqCon.active = true
+            AF.util.getRankList(list => {
+                if (list) {
+                    this.list = list
+                    this.updateHeads(pointId)
+                }
+            })
+        }
+    },
+    updateHeads: function (pointId) {
+        if (!this.node || !this.node.active) {
+            return
+        }
+        for (let i = 0; i < 3 && i < this.list.length; i++) {
+            if (this.list[i].score >= pointId) {
+                this.heads[i].active = true
+                this.heads[i].getComponent("PhotoPrefab").setPhoto(this.list[i].url);
+            } else {
+                break
+            }
+        }
+    },
+
+    // 初始化子域适配信息
+    initCanvas() {
+        if (!AF.platform.isWxApp()) {
+            return
+        }
+        let _canvas = cc.Canvas.instance;
+        let _rateR = _canvas.designResolution.height / _canvas.designResolution.width;
+        let _rateV = cc.director.getVisibleSize().height / cc.director.getVisibleSize().width;
+        if (_rateV > _rateR) {
+            _canvas.fitHeight = false;
+            _canvas.fitWidth = true;
+        } else {
+            _canvas.fitHeight = true;
+            _canvas.fitWidth = false;
+        }
+
+        //根据实际分辨率设置主域用来绘制 sharedCanvas 的 Sprite宽高
+        this.wxDisplay.node.setContentSize(cc.director.getVisibleSize());
+        //得到一个Texture实例，用来在主域渲染sharedCanvas
+        this.tex = new cc.Texture2D();
+        //sharedCanvas的宽高一定不要自己设置，要用默认的，否则触碰会不正确
+        window.sharedCanvas.width = 640;
+        window.sharedCanvas.height = 1136;
+
+        // AF.util.postMessage(2, { isAllScreen: AF.util.isAllScreen() });
+    },
+
+    // 刷新子域的纹理
+    _updateSubDomainCanvas() {
+        if (window.sharedCanvas !== undefined) {
+            this.tex.initWithElement(window.sharedCanvas);
+            this.tex.handleLoadedTexture();
+            this.wxDisplay.spriteFrame = new cc.SpriteFrame(this.tex);
+        }
+    },
+    update: function update() {
+        this._updateSubDomainCanvas();
+    },
+})
+
+
+

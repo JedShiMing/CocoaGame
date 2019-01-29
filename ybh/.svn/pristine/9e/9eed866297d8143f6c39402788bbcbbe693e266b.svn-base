@@ -1,0 +1,19 @@
+{
+	"dialogs": {
+		"HallBalanceDialog": "hall/prefabs/dialogs/HallBalanceDialog",
+		"HallDownloadDialog": "hall/prefabs/dialogs/HallDownloadDialog",
+		"HallGameDialog": "hall/prefabs/dialogs/HallGameDialog",
+		"HallGiftDialog": "hall/prefabs/dialogs/HallGiftDialog",
+		"LoginProgressDialog": "hall/prefabs/dialogs/LoginProgressDialog"
+	},
+	"module": {
+		"framework": [],
+		"hall": [
+			"HallBalanceDialog",
+			"HallDownloadDialog",
+			"HallGameDialog",
+			"HallGiftDialog",
+			"LoginProgressDialog"
+		]
+	}
+}

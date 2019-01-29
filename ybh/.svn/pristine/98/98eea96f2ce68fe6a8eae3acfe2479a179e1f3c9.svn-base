@@ -1,0 +1,58 @@
+cc.Class({
+    extends: cc.Component,
+
+    properties: {
+    },
+
+    // use this for initialization
+    onLoad: function () {
+        console.log("HallBootScene onLoad");
+    },
+
+    onEnable: function () {
+        console.log("HallBootScene onEnable");
+        //console.log("SceneMgr", SceneManager);
+        // 添加SceneManager节点
+        
+        /*
+        var s = cc.director.getScene();
+        var node = new cc.Node('SceneManager');
+        node.addComponent(SceneManager);
+        s.addChild(node);
+
+        AF.gotoScene("HallLoginScene");
+        */
+        
+    },
+
+    start: function () {
+        console.log("HallBootScene start");
+        
+
+        var SceneManager = require('af-scene-mgr');
+
+        // 添加SceneManager节点
+        var s = cc.director.getScene();
+        if (CC_EDITOR || s.getChildByName('SceneManager')) return;
+        var node = new cc.Node('SceneManager');
+        node.addComponent(SceneManager);
+        s.addChild(node);
+        
+
+        AF.gotoScene("HallLoginScene");
+
+    },
+
+    update: function () {
+        /*
+
+        var dialogList = AF.Config.getDialogList();
+
+        if (!dialogList) {
+            //console.log("loading dialog list");
+        } else {
+            //console.log(dialogList);
+        }
+        */
+    },
+});

@@ -1,0 +1,96 @@
+const itemWidth = 90
+
+cc.Class({
+    extends: cc.Component,
+
+    properties: {
+        heads: [cc.Node],
+        label_time: [cc.Label],
+        btn_left: cc.Button,
+        btn_right: cc.Button,
+    },
+
+    // LIFE-CYCLE CALLBACKS:
+    onLoad: function () {
+        AF.EventDispatcher.on('UpdateBalancePassed', this.updatePoint, this)
+
+        this.btn_left.interactable = false
+        this.btn_right.interactable = false
+        this.clearHeads()
+
+        this.page = 0
+    },
+    onDestroy() {
+        AF.EventDispatcher.off('UpdateBalancePassed', this.updatePoint, this)
+    },
+    updatePoint: function ({ pointId, costTime }) {
+        this.pointId = pointId
+        this.costTime = costTime
+        // this.heads.forEach(item => item.active = false)
+        // if (this.list) {
+        //     this.updateHeads(pointId)
+        // } else
+        {
+            AF.util.getRankList(list => {
+                if (list) {
+                    list = list.filter(item => item.score >= this.pointId)
+                    this.list = this.randomTime(list)
+                    this.list.sort((a, b) => a.time > b.time)
+                    let page = 0
+                    for (let i = 0; i < this.list.length; i++) {
+                        if (this.list[i].selfFlag) {
+                            page = Math.floor(i / 3)
+                            break
+                        }
+                    }
+                    this.setPage(page)
+                }
+            })
+        }
+    },
+    randomTime(list) {
+        let time = 2 + Math.ceil(Math.sqrt(this.pointId) * (1 + Math.random()))
+        for (let i = 0; i < list.length; i++) {
+            if (!list[i].selfFlag) {
+                time += Math.floor(Math.random() * 6)
+                list[i].time = time
+                // list[i].url = list[0].url
+            } else {
+                list[i].time = Math.floor(this.costTime / 1000)
+            }
+        }
+        return list
+    },
+    setPage(page) {
+        if (!this.node || !this.node.active) {
+            return
+        }
+        this.page = page
+        let totalPage = Math.ceil(this.list.length / 3)
+        this.btn_left.interactable = page > 0
+        this.btn_right.interactable = page < totalPage - 1
+
+        this.updateHeads(page)
+    },
+    nextPage() {
+        this.setPage(this.page + 1)
+    },
+    lastPage() {
+        this.setPage(this.page - 1)
+    },
+    updateHeads: function (page) {
+        this.clearHeads()
+        for (let i = page * 3; i < page * 3 + 3 && i < this.list.length; i++) {
+            this.heads[i % 3].active = true
+            this.heads[i % 3].getComponent("PhotoPrefab").setPhoto(this.list[i].url);
+            this.label_time[i % 3].string = this.list[i].time + '秒';
+        }
+    },
+    clearHeads() {
+        this.heads.forEach(item => item.getComponent("PhotoPrefab").clearPhoto())
+        this.label_time.forEach(item => item.string = '')
+    },
+})
+
+
+

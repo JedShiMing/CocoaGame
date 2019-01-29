@@ -1,0 +1,82 @@
+
+module.exports = cc.Class({
+    extends: cc.Component,
+
+    properties: {
+        heads: [cc.Node]
+    },
+
+    // LIFE-CYCLE CALLBACKS:
+    onLoad: function () {
+    },
+    updatePoint: function (pointId) {
+        wx.getFriendCloudStorage({
+            keyList: ["score"],
+            success: res => {
+                console.log("wx.getFriendCloudStorage success", res);
+                let players = []
+                for (let i = 0; i < res.data.length; i++) {
+                    var data = res.data[i];
+                    var obj = null;
+                    for (let k = 0; k < data.KVDataList.length; k++) {
+                        var kvData = data.KVDataList[k];
+                        if (kvData.key == "score") {
+                            obj = JSON.parse(kvData.value);
+                            break;
+                        }
+                        if (obj) {
+                            break;
+                        }
+                    }
+                    if (obj) {
+                        var player = {};
+                        player.score = obj.score || 0;
+                        player.startTime = obj.startTime || 0;
+                        player.endTime = obj.endTime || 0;
+                        player.openid = data.openid;
+                        player.nickname = data.nickname;
+                        player.avatarUrl = data.avatarUrl;
+                        players.push(player);
+                    }
+                }
+                if (players.length > 0) {
+                    console.log(players);
+                    this.list = players
+                    this.updateHeads(pointId)
+                } else {
+                    console.log('没有好友')
+                }
+            },
+            fail: res => {
+                console.log("wx.getFriendCloudStorage fail", res);
+            },
+        });
+
+
+        // {
+        //     AF.util.getRankList(list => {
+        //         if (list) {
+        //             this.list = list
+        //             this.updateHeads(pointId)
+        //         }
+        //     })
+        // }
+    },
+    updateHeads: function (pointId) {
+        if (!this.node || !this.node.active) {
+            return
+        }
+        for (let i = 0; i < 3 && i < this.list.length; i++) {
+            if (this.list[i].score >= pointId) {
+                this.heads[i].active = true
+                this.heads[i].getComponent("PhotoPrefab").setPhoto(this.list[i].avatarUrl);
+            } else {
+                // this.heads[i].active = false
+                this.heads[i].getComponent("PhotoPrefab").clearPhoto()
+            }
+        }
+    },
+})
+
+
+

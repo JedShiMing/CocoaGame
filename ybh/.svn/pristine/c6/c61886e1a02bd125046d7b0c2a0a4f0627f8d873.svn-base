@@ -1,0 +1,69 @@
+(function() {"use strict";var __module = CC_EDITOR ? module : {exports:{}};var __filename = 'preview-scripts/assets/Script/FriendPassedView.js';var __require = CC_EDITOR ? function (request) {return cc.require(request, require);} : function (request) {return cc.require(request, __filename);};function __define (exports, require, module) {"use strict";
+cc._RF.push(module, '7819ffsC61D3qIWkDZsVmkL', 'FriendPassedView', __filename);
+// Script/FriendPassedView.js
+
+"use strict";
+
+var _Util = require("./Util");
+
+var _Util2 = _interopRequireDefault(_Util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = cc.Class({
+    extends: cc.Component,
+
+    properties: {
+        heads: [cc.Node]
+    },
+
+    // LIFE-CYCLE CALLBACKS:
+    onLoad: function onLoad() {},
+    updatePoint: function updatePoint(pointId) {
+        var _this = this;
+
+        // {
+        //     AF.util.getRankList(list => {
+        //         if (list) {
+        //             this.list = list
+        //             this.updateHeads(pointId)
+        //         }
+        //     })
+        // }
+
+        _Util2.default.getWXFriendRanks().then(function (list) {
+            if (list) {
+                _this.list = list;
+                _this.updateHeads(pointId);
+            }
+        });
+    },
+    updateHeads: function updateHeads(pointId) {
+        if (!this.node || !this.node.active) {
+            return;
+        }
+        for (var i = 0; i < 3 && i < this.list.length; i++) {
+            if (this.list[i].score >= pointId) {
+                this.heads[i].active = true;
+                this.heads[i].getComponent("PhotoPrefab").setPhoto(this.list[i].avatarUrl);
+            } else {
+                // this.heads[i].active = false
+                this.heads[i].getComponent("PhotoPrefab").clearPhoto();
+            }
+        }
+    }
+});
+
+cc._RF.pop();
+        }
+        if (CC_EDITOR) {
+            __define(__module.exports, __require, __module);
+        }
+        else {
+            cc.registerModuleFunc(__filename, function () {
+                __define(__module.exports, __require, __module);
+            });
+        }
+        })();
+        //# sourceMappingURL=FriendPassedView.js.map
+        

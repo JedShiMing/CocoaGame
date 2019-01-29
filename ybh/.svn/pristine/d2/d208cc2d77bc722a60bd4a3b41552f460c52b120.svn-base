@@ -1,0 +1,49 @@
+const util = {
+    // 获取微信好友排行榜数据
+    getWXFriendRanks(cb) {
+        wx.getFriendCloudStorage({
+            keyList: ["score"],
+            success: res => {
+                let players = [];
+
+                for (let i = 0; i < res.data.length; i++) {
+                    var data = res.data[i];
+
+                    var obj = null;
+
+                    for (let k = 0; k < data.KVDataList.length; k++) {
+                        var kvData = data.KVDataList[k];
+
+                        if (kvData.key === "score") {
+                            obj = JSON.parse(kvData.value);
+                            break;
+                        }
+
+                        if (obj) {
+                            break;
+                        }
+                    }
+
+                    if (obj) {
+                        var player = {};
+                        player.score = obj.score || 0;
+                        player.startTime = obj.startTime || 0;
+                        player.endTime = obj.endTime || 0;
+                        player.openid = data.openid;
+                        player.nickname = data.nickname;
+                        player.avatarUrl = data.avatarUrl;
+                        players.push(player);
+                    }
+                }
+                players.sort(function (a, b) {
+                    return -(a.score - b.score)
+                });
+                if (players.length > 0) {
+                    cb && cb(players)
+                }
+            }
+        });
+    }
+};
+
+module.exports = util;

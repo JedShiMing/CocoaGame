@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "btn_home_down",
+    "texture": "aed22bc5-e0d5-45b2-97b8-1cbee6df6b11",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      163,
+      93
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      163,
+      93
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

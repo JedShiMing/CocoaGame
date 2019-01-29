@@ -1,0 +1,106 @@
+"use strict";
+cc._RF.push(module, '4f503fb6ThPJanpxGIbu6te', 'DataMain');
+// DataMain.js
+
+'use strict';
+
+var _BalancePassedView = require('./Script/BalancePassedView');
+
+var _BalancePassedView2 = _interopRequireDefault(_BalancePassedView);
+
+var _FriendPassedView = require('./Script/FriendPassedView');
+
+var _FriendPassedView2 = _interopRequireDefault(_FriendPassedView);
+
+var _Util = require('./Script/Util');
+
+var _Util2 = _interopRequireDefault(_Util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var RANK_ITEM_HEIGHT = 108;
+var RANK_ITEM_PADDING = 14;
+var PADDING_BOTTOM_H = 50;
+cc.Class({
+    extends: cc.Component,
+
+    properties: {
+        ranks: cc.Node,
+        RankItemPre: cc.Prefab,
+        Balance: cc.Node,
+        Friend: cc.Node
+    },
+
+    start: function start() {
+        if (!this.isWxApp()) {
+            return;
+        }
+        var self = this;
+        wx.onMessage(function (data) {
+            console.log('收到主域消息', data);
+            if (!data.cmd) {
+                self.ranks.active = false;
+                self.Balance.active = false;
+                self.Friend.active = false;
+            } else if (data.cmd === 2) {
+                // 排行榜
+                console.log('显示排行榜');
+                self.ranks.active = true;
+                self.Balance.active = false;
+                self.Friend.active = false;
+                self.requestDataFromServer();
+            } else if (data.cmd === 3) {
+                // 已通关好友, 右上角
+                console.log('显示右上角');
+                self.ranks.active = false;
+                self.Balance.active = false;
+                self.Friend.active = true;
+                self.showFriendPass(data.data);
+            } else if (data.cmd === 4) {
+                // 已通关好友, 中间
+                console.log('显示中间');
+                self.ranks.active = false;
+                self.Balance.active = true;
+                self.Friend.active = false;
+                self.showBalancePass(data.data);
+            }
+        });
+    },
+
+
+    requestDataFromServer: function requestDataFromServer() {
+        var self = this;
+        _Util2.default.getWXFriendRanks().then(function (list) {
+            if (list) self.renderRank(list);
+        });
+    },
+
+    renderRank: function renderRank(players) {
+        var self = this;
+        var friends = players;
+        console.log('ranks = ', self.ranks);
+        var _content = self.ranks.getChildByName('view').getChildByName('content');
+        for (var i = 0; i < friends.length; i++) {
+            var item = cc.instantiate(self.RankItemPre);
+            _content.addChild(item);
+            item.getComponent("RankItemPrefab").setPlayerInfo(i + 1, friends[i].avatarUrl, friends[i].nickname, friends[i].score, false);
+        }
+    },
+
+    isWxApp: function isWxApp() {
+        return 'undefined' !== typeof wx;
+    },
+
+    showFriendPass: function showFriendPass(data) {
+        this.Friend.active = true;
+        console.log('Friend = ', this.Friend);
+        this.Friend.getComponent(_FriendPassedView2.default).updatePoint(data.pointId);
+    },
+    showBalancePass: function showBalancePass(info) {
+        this.Balance.active = true;
+        console.log('Balance = ', this.Balance);
+        this.Balance.getComponent(_BalancePassedView2.default).updatePoint(info);
+    }
+});
+
+cc._RF.pop();

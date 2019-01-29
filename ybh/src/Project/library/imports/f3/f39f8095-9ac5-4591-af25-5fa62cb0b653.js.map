@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../../../assets/framework/config/wx/assets/framework/config/wx/wxVideoAd.js"],"names":["module","exports"],"mappings":";;;;;;AAAAA,OAAOC,OAAP,GAAiB,IAAjB","file":"wxVideoAd.js","sourceRoot":"../../../../../../assets/framework/config/wx","sourcesContent":["module.exports = true\r\n"]}

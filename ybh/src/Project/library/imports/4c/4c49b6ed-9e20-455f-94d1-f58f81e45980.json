@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "appect1",
+    "texture": "c76cc830-4835-407a-8994-97f8ffad2486",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      166,
+      92
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      166,
+      92
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

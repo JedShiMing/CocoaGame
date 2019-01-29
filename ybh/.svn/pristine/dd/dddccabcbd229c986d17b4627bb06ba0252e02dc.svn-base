@@ -1,0 +1,78 @@
+(function() {"use strict";var __module = CC_EDITOR ? module : {exports:{}};var __filename = 'preview-scripts/assets/Script/BalancePassedView.js';var __require = CC_EDITOR ? function (request) {return cc.require(request, require);} : function (request) {return cc.require(request, __filename);};function __define (exports, require, module) {"use strict";
+cc._RF.push(module, '84d2cTpPWpKfqJ61MNZ7Q5f', 'BalancePassedView', __filename);
+// Script/BalancePassedView.js
+
+'use strict';
+
+var _Util = require('./Util');
+
+var _Util2 = _interopRequireDefault(_Util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = cc.Class({
+    extends: cc.Component,
+
+    properties: {
+        heads: [cc.Node],
+        label_time: [cc.Label]
+    },
+
+    // LIFE-CYCLE CALLBACKS:
+    onLoad: function onLoad() {},
+
+    updatePoint: function updatePoint(_ref) {
+        var _this = this;
+
+        var pointId = _ref.pointId,
+            costTime = _ref.costTime;
+
+        this.costTime = costTime;
+        Promise.all([_Util2.default.getWeChatUserInfo(), _Util2.default.getWXFriendRanks()]).then(function (value) {
+            var selfInfo = value[0];
+            var ranklist = value[1];
+            if (!ranklist || !selfInfo) return;
+            var selfId = 0;
+            for (var i = 0; i < ranklist.length; i++) {
+                if (ranklist[i].nickname === selfInfo[0].nickName && ranklist[i].avatarUrl === selfInfo[0].avatarUrl) {
+                    selfId = i;
+                    break;
+                }
+            }
+            _this.ranks = [];
+            if (selfId === 0) {
+                _this.ranks = [ranklist[selfId], ranklist[selfId + 1], ranklist[selfId + 2]];
+            } else if (selfId === ranklist.length - 1) {
+                _this.ranks = [ranklist[selfId - 2], ranklist[selfId - 1], ranklist[selfId]];
+            } else {
+                _this.ranks = [ranklist[selfId - 1], ranklist[selfId], ranklist[selfId + 1]];
+            }
+            _this.updateHeads();
+        }).catch(function (eor) {
+            console.log('3e = ', eor);
+        });
+    },
+
+    updateHeads: function updateHeads() {
+        for (var i = 0; i < 3; i++) {
+            if (!this.ranks[i]) break;
+            this.heads[i].active = true;
+            this.heads[i].getComponent("PhotoPrefab").setPhoto(this.ranks[i].avatarUrl);
+            this.label_time[i].string = this.ranks[i].score + '关';
+        }
+    }
+});
+
+cc._RF.pop();
+        }
+        if (CC_EDITOR) {
+            __define(__module.exports, __require, __module);
+        }
+        else {
+            cc.registerModuleFunc(__filename, function () {
+                __define(__module.exports, __require, __module);
+            });
+        }
+        })();
+        //# sourceMappingURL=BalancePassedView.js.map
+        

@@ -1,0 +1,43 @@
+var DialogBase = require('AFDialogBase');
+
+cc.Class({
+    extends: DialogBase,
+
+    properties: {
+        toggle_share: cc.Toggle,
+        label_gold: cc.Label,
+    },
+
+    // LIFE-CYCLE CALLBACKS:
+    onLoad: function () {
+        DialogBase.prototype.onLoad.call(this);
+    },
+
+    onEnable: function () {
+        DialogBase.prototype.onEnable.call(this);
+        this.params = AF.DIALOG_PARAMS()
+        this.label_gold.string = AF.GameData.getMyPlayerData().gold.toString();
+    },
+
+    onDisable: function () {
+        AF.EventDispatcher.emit('ShowBalancePassed', { pointId: this.params.pointId, costTime: this.params.costTime })
+    },
+
+    onBtnClick() {
+        const tag = Date.now().toString()
+        if (this.toggle_share.isChecked) {
+            AF.util.shareAppMessage(null, () => {
+                this.close()
+                AF.util.setStorage('giftTag', tag)
+            }, () => {}, { tag:tag }, 'gift')
+        } else {
+            let playerData = AF.GameData.getMyPlayerData();
+            playerData.gold += 600
+            AF.GameData.setMyPlayerData(playerData);
+            AF.GameData.savePlayerData(playerData);
+            AF.EventDispatcher.emit('GoldRefresh');
+            this.close()
+        }
+    },
+
+});

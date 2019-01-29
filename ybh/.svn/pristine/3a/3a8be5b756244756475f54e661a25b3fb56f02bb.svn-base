@@ -1,0 +1,34 @@
+{
+	"dialogs": {
+		"DefaultLoadingLayerStyle": "framework/prefabs/dialogs/DefaultLoadingLayerStyle",
+		"DefaultMessageBoxStyle": "framework/prefabs/dialogs/DefaultMessageBoxStyle",
+		"HallBalanceDialog - 001": "hall/prefabs/dialogs/HallBalanceDialog - 001",
+		"HallBalanceDialog": "hall/prefabs/dialogs/HallBalanceDialog",
+		"HallDefaultMessageBox": "hall/prefabs/dialogs/HallDefaultMessageBox",
+		"HallDownloadDialog": "hall/prefabs/dialogs/HallDownloadDialog",
+		"HallGameDialog": "hall/prefabs/dialogs/HallGameDialog",
+		"HallLoadingDialog": "hall/prefabs/dialogs/HallLoadingDialog",
+		"HallRocketDialog": "hall/prefabs/dialogs/HallRocketDialog",
+		"HallWaitingDialog": "hall/prefabs/dialogs/HallWaitingDialog",
+		"LoginProgressDialog": "hall/prefabs/dialogs/LoginProgressDialog",
+		"HallGiftDialog": "hall/prefabs/dialogs/HallGiftDialog"
+	},
+	"module": {
+		"framework": [
+			"DefaultLoadingLayerStyle",
+			"DefaultMessageBoxStyle"
+		],
+		"hall": [
+			"HallBalanceDialog - 001",
+			"HallBalanceDialog",
+			"HallDefaultMessageBox",
+			"HallDownloadDialog",
+			"HallGameDialog",
+			"HallLoadingDialog",
+			"HallRocketDialog",
+			"HallWaitingDialog",
+			"LoginProgressDialog",
+			"HallGiftDialog"
+		]
+	}
+}

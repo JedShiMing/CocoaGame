@@ -1,0 +1,114 @@
+import BalancePassedView from './js/BalancePassedView'
+import FriendPassedView from './js/FriendPassedView'
+import Util from './js/Util'
+const RANK_ITEM_HEIGHT = 108;
+const RANK_ITEM_PADDING = 14;
+const PADDING_BOTTOM_H = 50;
+
+cc.Class({
+    extends: cc.Component,
+
+    properties: {
+        openData1: cc.Node,
+        scrollView: cc.ScrollView,
+        RankItemPre: cc.Prefab,
+        scrView: cc.Node,
+
+        openData3: cc.Node,
+        openData4: cc.Node,
+    },
+
+    start: function () {
+        if (!this.isWxApp()) {
+            return;
+        }
+        let self = this
+        wx.onMessage(data => {
+            // console.log('收到主域消息',data)
+            if (data.cmd === 1) { // eg
+                this.openData1.active = true;
+                this.openData3.active = false;
+                this.openData4.active = false;
+                this.tabId = data.cmd;
+                this.showNextWrap(data.data.score);
+                this.setNextWrapPosition(data.data.pos);
+            } else if (data.cmd === 2) {  // 排行榜
+                this.openData1.active = true;
+                this.openData3.active = false;
+                this.openData4.active = false;
+                if (!self._isAllScreen) {
+                    if (data.data.isAllScreen) {
+                        self._isAllScreen = 1;
+                        self.scrollView.node.y = self.scrollView.node.y - 30
+                        self.scrView.height = self.scrView.height - PADDING_BOTTOM_H
+                    } else {
+                        self._isAllScreen = 0;
+                        self.scrollView.node.y = self.scrollView.node.y + 4
+                    }
+                    this.players = [];
+                }
+                // this.players = list
+                // this.renderRank()
+                this.requestDataFromServer()
+            } else if (data.cmd === 3) { // 已通关好友, 右上角
+                this.openData1.active = false;
+                this.openData4.active = false;
+                this.showFriendPass(data.data)
+            } else if (data.cmd === 4) { // 已通关好友, 中间
+                this.openData1.active = false;
+                this.openData3.active = false;
+                this.showBalancePass(data.data)
+            }
+            else {
+                this.openData1.active = false;
+                this.openData3.active = false;
+                this.openData4.active = false;
+                this.tabId = 0;
+            }
+        });
+    },
+
+    requestDataFromServer: function () {
+        var self = this;
+        Util.getWXFriendRanks().then(list => {
+            if (list) self.renderRank(list)
+        })
+    },
+
+    renderRank(players) {
+        let self = this;
+        let friends = players;
+        let total_height = friends.length * RANK_ITEM_HEIGHT + RANK_ITEM_PADDING * (friends.length - 1);
+
+        if (total_height < self.scrollView.node.height) {
+            total_height = self.scrollView.node.height;
+        } else {
+            total_height += PADDING_BOTTOM_H * self._isAllScreen
+        }
+        self.scrollView.content.height = total_height
+        for (let i = 0; i < friends.length; i++) {
+            let item = cc.instantiate(self.RankItemPre);
+            self.scrollView.content.addChild(item);
+
+            item.getComponent("RankItemPrefab").setPlayerInfo(i + 1, friends[i].avatarUrl, friends[i].nickname, friends[i].score, false);
+
+            item.x = self.scrollView.content.width / 2;
+            item.y = -(i * (RANK_ITEM_HEIGHT + RANK_ITEM_PADDING) + RANK_ITEM_HEIGHT / 2)
+        }
+    },
+    isWxApp: function () {
+        return 'undefined' !== typeof (wx);
+    },
+
+
+    showFriendPass(data) {
+        this.openData3.active = true
+        this.openData3.getComponent(FriendPassedView).updatePoint(data.pointId)
+
+    },
+    showBalancePass(info) {
+        this.openData4.active = true
+        console.log('openData4 = ', this.openData4)
+        this.openData4.getComponent(BalancePassedView).updatePoint(info)
+    },
+});

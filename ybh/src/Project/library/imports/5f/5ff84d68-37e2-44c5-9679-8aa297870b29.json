@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "tujian1",
+    "texture": "d1388c21-9633-438c-9a5a-2fc6a1c2fdcb",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      148,
+      84
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      148,
+      84
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

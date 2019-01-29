@@ -1,0 +1,3 @@
+module.exports = {
+    'set-click-attach': '设置按钮attach',
+};

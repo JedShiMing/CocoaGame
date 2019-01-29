@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "winbg",
+    "texture": "0765ed6b-db92-426c-a260-611ae75977d8",
+    "atlas": "",
+    "rect": [
+      0,
+      2,
+      519,
+      146
+    ],
+    "offset": [
+      0,
+      -1
+    ],
+    "originalSize": [
+      519,
+      148
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

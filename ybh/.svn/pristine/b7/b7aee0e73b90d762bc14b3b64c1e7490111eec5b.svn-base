@@ -1,0 +1,49 @@
+// Learn cc.Class:
+//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/class.html
+//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/class.html
+// Learn Attribute:
+//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
+//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/reference/attributes.html
+// Learn life-cycle callbacks:
+//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
+//  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
+
+cc.Class({
+    extends: cc.Component,
+
+    editor: {
+        menu: 'ApplicationFramework/AFLoadingAnim'
+    },
+
+    properties: {
+        inAnimClip: {
+            default: null,
+            type: cc.AnimationClip,
+            displayName: '动画'
+        },
+    },
+
+    onLoad: function () {
+        this._anim = this.getComponent(cc.Animation);
+    },
+
+    onEnable: function () {
+        this.node.x = cc.winSize.width / 2;
+        this.node.y = cc.winSize.height / 2;
+    },
+
+    playInAnim: function (cb) {
+        if (this._anim && this.inAnimClip) {
+            this.node.active = true;
+            this._anim.play(this.inAnimClip.name);
+            cb && cb();
+        }
+    },
+
+    playOutAnim: function() {
+        // if (this._anim && this.inAnimClip) {
+        //     this._anim.stop(this.inAnimClip.name);
+        // }
+        this.node.active = false;
+    },
+});

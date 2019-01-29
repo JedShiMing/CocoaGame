@@ -1,0 +1,311 @@
+var DialogBase = require('AFDialogBase');
+
+cc.Class({
+    extends: DialogBase,
+
+    properties: {
+        reviveButton: cc.Node,
+        cancelButton: cc.Node,
+        cooldownLable: cc.Label,
+        scoreLabel: cc.Label,
+        scoreIcon: cc.Node,
+        overLabel: cc.Label,
+        overLayer: cc.Node,
+        reviveLayer: cc.Node,
+        shareButton: cc.Button,
+        nextWrap: cc.Node,
+        nextScoreLabel: cc.Label,
+        nextHead: cc.Sprite,
+        myHead: cc.Sprite,
+        wxNextWrap: cc.Node,
+    },
+
+    watchingAd: false,
+
+    // LIFE-CYCLE CALLBACKS:
+
+    onLoad: function () {
+        DialogBase.prototype.onLoad.call(this);
+
+        var shadow = this.node.getChildByName('shadow');
+        shadow.width = cc.winSize.width;
+        shadow.width = cc.winSize.width;
+
+        this.node.width = cc.winSize.width;
+        this.node.height = cc.winSize.height;
+
+        this.initOverLayer();
+        this.initReviveLayer();
+
+        this.overLayer.active = false;
+        this.reviveLayer.active = false;
+
+        this.wxOpenDataTexture = null;
+        this.wxOpenDataSprite = null;
+
+        this.createWxNextPlayer();
+    },
+    
+    initOverLayer: function () {
+        this.overLayer;
+
+    },
+    
+    initReviveLayer: function () {
+        //reviveButton
+        //cancelButton
+        //scoreNode
+
+        var gameCountNode = this.reviveLayer.getChildByName('gameCount');
+        gameCountNode.setPosition(0, cc.winSize.height * 0.93);
+
+        var scoreNode = this.reviveLayer.getChildByName('scoreNode');
+        scoreNode.setPosition(cc.winSize.width * 0.5, cc.winSize.height * 0.93 - 150);
+
+        var reviveButton = this.reviveLayer.getChildByName('reviveButton');
+        reviveButton.setPosition(cc.winSize.width * 0.5, cc.winSize.height * 0.5);
+
+        var cancelButton = this.reviveLayer.getChildByName('cancelButton');
+        cancelButton.setPosition(cc.winSize.width * 0.5, 300);
+    },
+
+    onEnable: function () {
+        DialogBase.prototype.onEnable.call(this);
+
+        AF.util.postMessage(0, {});
+
+        var params = AF.DIALOG_PARAMS();
+        this.data = params.data
+        this.shareButton.interactable = true
+        switch (params.modle) {
+            case 'revive':
+                this.showReviveModle(params.data);
+                break;
+            case 'balance':
+                this.showBalanceModle(params.data);
+                break;
+            default:
+                break;
+        }
+
+    },
+    onDisable: function () {
+        DialogBase.prototype.onDisable.call(this);
+
+        AF.util.hideBannerAd('battle')
+    },
+
+    createWxNextPlayer: function () {
+        if (!AF.platform.isWxApp()) {
+            return;
+        }
+
+        if (this.wxOpenDataTexture) {
+            return;
+        }
+
+        this.wxOpenDataTexture = new cc.Texture2D();
+
+        var node = new cc.Node();
+        this.wxNextWrap.addChild(node);
+
+        node.width = cc.winSize.width;
+        node.height = cc.winSize.height;
+        node.setAnchorPoint(0, 0);
+        node.setPosition(0, 0)
+
+        var sp = node.addComponent(cc.Sprite);
+        sp.trim = false;
+        sp.sizeMode = 0;
+
+        this.wxOpenDataSprite = sp;
+    },
+
+    showWxNextPlayer: function (score) {
+        var self = this;
+
+        if (!AF.platform.isWxApp()) {
+            return;
+        }
+
+        if (!self.wxOpenDataSprite || !self.wxOpenDataTexture) {
+            return;
+        }
+
+        self.wxOpenDataSprite.node.active = false;
+
+        var x = self.nextWrap.x;
+        var y = self.nextWrap.y;
+
+        var pos = self.nextWrap.convertToWorldSpaceAR(cc.p(0, 0));
+
+        self.wxNextWrap.x = x - pos.x;
+        self.wxNextWrap.y = y - pos.y;
+
+        AF.util.postMessage(1, {score: score, pos: pos});
+
+        function showOpenDataTexture() {
+            var openDataContext = wx.getOpenDataContext();
+            var sharedCanvas = openDataContext.canvas;
+            self.wxOpenDataTexture.initWithElement(sharedCanvas);
+            self.wxOpenDataTexture.handleLoadedTexture();
+            self.wxOpenDataSprite.spriteFrame = new cc.SpriteFrame(self.wxOpenDataTexture);
+            self.wxOpenDataSprite.node.active = true;
+        }
+
+        setTimeout(function () {
+            showOpenDataTexture();
+        }, 1000);
+    },
+
+    showReviveModle: function (data) {
+        this.cooldownNum = 5;
+        this.cooldownLable.string = '5';
+        this.overLayer.active = false;
+        this.reviveLayer.active = true;
+        this.cancelButton.active = false;
+        //心跳动画
+        this.reviveButton.stopAllActions()
+        this.reviveButton.scaleX = 1
+        this.reviveButton.scaleY = 1
+        const anim1 = cc.scaleTo(0.5,0.8,0.8)
+        const anim2 = cc.scaleTo(0.3,1,1)
+        const actions = cc.sequence(anim1, anim2)
+        this.action = this.reviveButton.runAction(cc.repeatForever(actions))
+        //显示广告
+        AF.util.showBannerAd('battle')
+
+        this.nextWrap.active = false;
+        // cc.loader.load('http://thirdqq.qlogo.cn/g?b=sdk&k=lTtNtmnB7VynsXkaicKYxAQ&s=100&t=1483296505', (err, texture) => {
+        //     this.nextHead.spriteFrame = new cc.SpriteFrame(texture);
+        // });
+        //qq-获取排行数据   wx-显示？？
+        AF.util.getRankList(rankList => {
+            if (rankList) {
+                let item = null
+                for (let i = 0; i < rankList.length; i++) {
+                    if ( rankList[i].score > data.score &&
+                        // !rankList[i].selfFlag &&
+                        (!item || rankList[i].score < item.score)) {
+                        item = rankList[i]
+                    }
+                }
+                if (item) {
+                    this.nextWrap.active = true
+                    this.nextScoreLabel.string = item.score + '分'
+                    cc.loader.load({ url: item.url, type: "jpg" }, (err, texture) => {
+                        if(!err) {
+                            this.nextHead.spriteFrame = new cc.SpriteFrame(texture);
+                        }
+                    });
+                }
+            }
+        })
+
+        var gameCountNode = this.reviveLayer.getChildByName('gameCount');
+        var scoreNum = gameCountNode.getChildByName('scoreNum').getComponentInChildren(cc.Label);
+        scoreNum.string = data.score;
+
+        this.showWxNextPlayer(data.score);
+    },
+
+    showBalanceModle: function (data) {
+        AF.audio.stopBGM();
+        this.cooldownNum = 0;
+        this.overLayer.active = true;
+        this.reviveLayer.active = false;
+
+        this.scoreLabel.string = `${data.score}`
+        this.scoreIcon.x = 1 + this.scoreLabel.node.width / 2
+        this.overLabel.string = `已经超越${Math.min(99, Math.floor(Math.sqrt(data.score)))}%的玩家`
+
+        //
+        const selfInfo = AF.util.getUserInfo()
+        if(selfInfo && selfInfo.avatarUrl){
+            cc.loader.load({ url: selfInfo.avatarUrl, type: "jpg" }, (err, texture) => {
+                if(!err){
+                    this.myHead.spriteFrame = new cc.SpriteFrame(texture);
+                }
+            });
+        }
+
+        AF.util.upScore({
+            score: this.data.score,
+            startTime: data.startTime,
+            endTime: Date.now(),
+        })
+    },
+
+    /********** 按钮回调函数 **********/
+    onContinueButtonClick: function (event, custom) {
+        this.close();
+        AF.EventDispatcher.emit(AF.Event.JUMP_REVIVE, 1);
+    },
+
+    onReviveButtonClick: function (event, custom) {
+        this.watchingAd = true
+        AF.util.showVideoAd("power", (res) => {
+            this.watchingAd = false
+            if (res) {
+                this.close();
+                AF.EventDispatcher.emit(AF.Event.JUMP_REVIVE, 0);
+            } else {
+                AF.ToastMessage.show("观看中止");
+            }
+        });
+    },
+
+    onCancelButtonClick: function (event, custom) {
+        AF.EventDispatcher.emit(AF.Event.JUMP_REVIVE, 2);
+
+        this.showBalanceModle(this.data)
+    },
+    share: function () {
+        AF.util.shareAppMessage(null, () => {
+            //分数翻倍
+            this.shareButton.interactable = false
+            this.scoreLabel.string = `${data.score}分`
+            this.overLabel.string = `已经超越${Math.min(99, Math.floor(Math.sqrt(data.score)))}%的玩家`
+            AF.util.upScore({
+                score: this.data.score * 2,
+                startTime: data.startTime,
+                endTime: Date.now(),
+            })
+        }, () => {
+            console.log('fail')
+        })
+    },
+    challenge: function () {
+        AF.util.shareAppMessage(null, () => {
+            console.log('suc')
+        }, () => {
+            console.log('fail')
+        }, { score: 100 }, 'challenge')
+    },
+
+    update: function (dt) {
+        if (this.cooldownNum <= 0 || this.watchingAd) {
+            return;
+        }
+        let oldValue = Math.ceil(this.cooldownNum)
+        this.cooldownNum -= dt;
+        let newValue = Math.ceil(this.cooldownNum)
+        if(this.cooldownNum <= 0.25 && !this.hideAction){
+            this.reviveButton.stopAllActions()
+            this.hideAction = this.reviveButton.runAction(cc.scaleTo(this.cooldownNum,0,0))
+        }
+        if (this.cooldownNum <= 0) {
+            this.onCancelButtonClick()
+            this.hideAction = null
+        }
+
+        if (oldValue === newValue) {
+            return
+        }
+        if (newValue === 3) {
+            AF.audio.pauseBGM();
+            this.cancelButton.active = true;
+        }
+        this.cooldownLable.string = newValue;
+    },
+});

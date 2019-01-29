@@ -1,0 +1,14 @@
+info face="ºÚÌå" size=45 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1 outline=0
+common lineHeight=45 base=39 scaleW=512 scaleH=512 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="yellowNum.png"
+chars count=10
+char id=48   x=73    y=0     width=71    height=95    xoffset=0     yoffset=0     xadvance=71    page=0  chnl=15
+char id=49   x=139   y=96    width=50    height=95    xoffset=0     yoffset=0     xadvance=50    page=0  chnl=15
+char id=50   x=70    y=96    width=68    height=95    xoffset=0     yoffset=0     xadvance=68    page=0  chnl=15
+char id=51   x=145   y=0     width=71    height=95    xoffset=0     yoffset=0     xadvance=71    page=0  chnl=15
+char id=52   x=433   y=0     width=69    height=95    xoffset=0     yoffset=0     xadvance=69    page=0  chnl=15
+char id=53   x=217   y=0     width=71    height=95    xoffset=0     yoffset=0     xadvance=71    page=0  chnl=15
+char id=54   x=289   y=0     width=71    height=95    xoffset=0     yoffset=0     xadvance=71    page=0  chnl=15
+char id=55   x=0     y=96    width=69    height=95    xoffset=0     yoffset=0     xadvance=69    page=0  chnl=15
+char id=56   x=361   y=0     width=71    height=95    xoffset=0     yoffset=0     xadvance=71    page=0  chnl=15
+char id=57   x=0     y=0     width=72    height=95    xoffset=0     yoffset=0     xadvance=72    page=0  chnl=15

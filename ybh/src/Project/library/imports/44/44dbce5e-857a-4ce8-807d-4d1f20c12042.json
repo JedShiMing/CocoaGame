@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "challenge1",
+    "texture": "96914ff0-7dd9-42a2-b711-5bb245ada366",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      211,
+      94
+    ],
+    "offset": [
+      0,
+      0.5
+    ],
+    "originalSize": [
+      211,
+      95
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

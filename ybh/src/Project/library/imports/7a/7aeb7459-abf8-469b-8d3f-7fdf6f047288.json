@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "process_bar_bg",
+    "texture": "c7eda9fb-7580-4cad-98df-a5b63f9de3f2",
+    "atlas": "",
+    "rect": [
+      1,
+      0,
+      558,
+      37
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      560,
+      37
+    ],
+    "capInsets": [
+      17,
+      14,
+      17,
+      14
+    ]
+  }
+}

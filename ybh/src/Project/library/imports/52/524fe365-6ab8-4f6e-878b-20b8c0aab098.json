@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "dialog_msg_btn_yes",
+    "texture": "50ddcd98-37bb-42e0-9fab-680889eba5e8",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      220,
+      101
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      220,
+      101
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

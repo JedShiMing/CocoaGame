@@ -1,0 +1,40 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "loading",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.3333333333333333,
+  "sample": 30,
+  "speed": 1,
+  "wrapMode": "0",
+  "curveData": {
+    "paths": {
+      "New Node": {
+        "comps": {},
+        "props": {
+          "width": [
+            {
+              "frame": 0,
+              "value": 1880
+            },
+            {
+              "frame": 0.3333333333333333,
+              "value": 188
+            }
+          ],
+          "height": [
+            {
+              "frame": 0,
+              "value": 1580
+            },
+            {
+              "frame": 0.3333333333333333,
+              "value": 158
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}
