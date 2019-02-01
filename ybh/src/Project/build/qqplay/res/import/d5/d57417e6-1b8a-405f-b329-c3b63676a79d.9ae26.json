@@ -1,1 +1,0 @@
-{"__type__":"cc.AnimationClip","_name":"switch_scne_in","_duration":1.5,"wrapMode":"2","curveData":{"paths":{"loading":{"comps":{"cc.Label":{"string":[{"frame":0,"value":"正在捕捉女/男朋友."},{"frame":0.5,"value":"正在捕捉女/男朋友.."},{"frame":1,"value":"正在捕捉女/男朋友..."},{"frame":1.5,"value":"正在捕捉女/男朋友."}]}}}}},"events":[{"frame":0.5,"func":"","params":[]},{"frame":0.5,"func":"","params":[]}]}

@@ -1,5 +1,0 @@
-module.exports =  {
-    version: 1,
-    hotfix: 0,
-    displayVersion: '1.0.0'
-};

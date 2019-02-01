@@ -12,5 +12,3 @@
  5. childPackage: cocos creator 分包加载demo(已完成)
 
  6. mask: cocos creator 做一个透明遮罩的实例 demo(已完成)
-
- 7. ybh: cocos creator 一笔画 demo

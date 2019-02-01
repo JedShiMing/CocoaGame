@@ -1,1 +1,0 @@
-{"version":3,"sources":["qqShare.js"],"names":["module","exports"],"mappings":";;;;;;AAAAA,OAAOC,OAAP,GAAiB,IAAjB","file":"qqShare.js","sourceRoot":"../../../../../../assets/framework/config/qq","sourcesContent":["module.exports = true\r\n"]}
